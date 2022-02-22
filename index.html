@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{
+            background-color: #d90429;
+        }
+        h1, h2{
+            color: #73ba9b;
+            text-align: center;
+        }
+        #box{
+            background-color: #d5f2e3;
+            padding: 10px;
+            font-size: 18px;
+            border-radius: 30%;
+            border: solid white 2px;
+            /* margin-left: 500px; */
+            width: 100%;
+            text-align: center;
+            color: #003e1f;
+            font-variant: small-caps;
+            font-style: italic;
+        }
+        #ins{
+            background-color: #d5f2e3;
+            padding: 10px;
+            font-size: 18px;
+            width: 30%;
+            margin-left: 35%;
+        }
+        #list_item{
+            padding: 10px;
+            font-size: 25px;
+            /* background-color: d5f2e3; */
+            color: #d5f2e3;
+            font-variant: normal;
+            font-style: italic;
+        }
+    </style>
+    <title>To-Do List</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="row">TO-DO LIST</h1>
+        <h2>If you have completed your tasks, click on them and they disappear!</h2>
+        <br>
+        <div class="row">
+            <form action="">
+                <div class="input-group">
+                    <input type="text" placeholder="Enter your activity here..." id="box">
+                </div>
+                <br>
+                <div class="form-group">
+                    <input type="button" id="ins" value="Add" onclick="add_item()">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <ul id="list_item"></ul>
+    </div>
+    <script type="text/javascript">
+        function add_item(){
+            let item = document.getElementById("box");
+            let list_item = document.getElementById("list_item");
+            if(item.value != ""){
+                let make_li = document.createElement("li");
+                make_li.appendChild(document.createTextNode(item.value));
+                list_item.appendChild(make_li);
+                item.value = "";
+
+                make_li.onclick = function(){
+                    this.parentNode.removeChild(this);
+                } 
+            }
+            else{
+                alert("Oops please enter something!");
+            }
+        }
+    </script>
+</body>
+</html>
